@@ -51,7 +51,6 @@ export class AppComponent  {
     this.value.push(0);
 
     var requestData =new Data(this.value);
-
     
     console.log(requestData);
 

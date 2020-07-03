@@ -11,8 +11,10 @@ import (
 	"math/rand"
 	"net/http"
 	"os"
+	"cors-master"
 	"bytes"
 	"strconv"
+	"mux/mux-master"
 	"strings"
 	"time"
 )
@@ -214,8 +216,11 @@ func main() {
 	seeds := seed(observations, inter)
 	means, err = kmeans(observations, seeds, 10000)
 
-	http.HandleFunc("/", foo)
-	http.ListenAndServe(":3000", nil)
+	router := mux.NewRouter()
+	router.HandleFunc("/foo",foo).Methods("POST")
+	handler := cors.Default().Handler(router)
+	http.ListenAndServe(":3000",handler)
+
 
 }
 
@@ -225,7 +230,8 @@ func foo(w http.ResponseWriter, r *http.Request){
 	var pronostic Pronostic
 	err := decoder.Decode(&data)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("Data is missing")
+		return 
 	}
 	var clusteredObservation ClusteredObservation 
 	clusteredObservation.Observation = data.Values

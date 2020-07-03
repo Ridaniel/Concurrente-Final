@@ -1,0 +1,58 @@
+.container{
+    height: 100%;
+    margin-top: 50px;
+}
+.header{
+    height: 17%;
+}
+.content{
+    height: 80%;
+}
+
+.container-form{
+    text-align: center; 
+    width: 20%;
+    height: 80%;
+    margin: auto;
+}
+.text-header{
+    text-align: center;
+    padding-top: 40px;
+    margin:auto;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.example-full-width {
+    width: 100%;
+  }
+
+  .help{
+    text-align: end;
+    margin-right: 20px;
+
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-top: 5px;
+    margin-left: 40px;
+    margin-bottom: 15px;
+  }
+
+  .mat-slide-toggle {
+    margin-bottom: 20px;
+  }
+  
+  .espacio{
+    align-content: left;
+    margin: 10px;
+  }
+
+  button{
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .container-form {
+      width: 80%;
+    }
+  }

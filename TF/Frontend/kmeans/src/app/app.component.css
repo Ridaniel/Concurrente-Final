@@ -49,6 +49,22 @@
 
   button{
     margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .texto{
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .textoResp1{
+    font-size: 18px;
+    color: blue;
+  }
+
+  .textoResp2{
+    font-size: 18px;
+    color: red;
   }
 
   @media (max-width: 600px) {

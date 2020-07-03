@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { HelperComponent } from './helper/helper.component';
-import { Car } from './models/car';
 import { CarServiceService } from './services/car-service.service';
-import { ResultComponent } from './result/result.component';
-import { RequestApi } from './models/request-api';
 import { User } from './models/user';
 import { Region } from './models/region';
 import { range } from 'rxjs';
@@ -24,13 +20,15 @@ export class AppComponent  {
   region: Region;
 
   value: number[];
+  text: string;
+  textResp: string;
+
+  resp: boolean;
 
   constructor(private dialog: MatDialog, private carService: CarServiceService){
     this.colocarRegiones();
-  }
-
-  openHelper(): void{
-    const dialogRef = this.dialog.open(HelperComponent);
+    this.text = "";
+    this.resp = false;
   }
   
   diagnosticar(){
@@ -52,16 +50,20 @@ export class AppComponent  {
 
     var requestData =new Data(this.value);
     
-    console.log(requestData);
-
     this.carService.metodo(requestData).subscribe(
       result => {
-        console.log("Enviar");
-        console.log(result);
-        //const dialogRef = this.dialog.open(ResultComponent, {data:{result: result}});
+        this.text = "El porcentaje de peligro para la persona es: " + Number((result.riesgo * 100)).toFixed(2) + "%";
+        this.resp = result.infectado;
+        if(result.infectado == null){
+          this.textResp = "Negativo a Covid-19";
+        }else {
+          this.textResp = "Positivo a Covid-19";
+        }
       },
       err => {alert("Ocurrio un error, no se pudo obtener los datos");console.error(err);}
     );
+
+    this.user = new User();
     
   }
 

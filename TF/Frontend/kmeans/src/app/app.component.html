@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header">
-    <div class="text-header"> Diagnostico Covid-19</div>
+    <div class="text-header"> Diagnóstico Covid-19</div>
   </div>
   <div class="content">
     <div class="container-form">
@@ -31,12 +31,17 @@
       <mat-slide-toggle  class="espacio" [(ngModel)]="user.neumonia" name="neumonia">Neumonia</mat-slide-toggle>
       <mat-slide-toggle class="espacio" [(ngModel)]="user.viajo" name="viajo">Viajo</mat-slide-toggle>
       
+      
 
     </form>
 
     <button mat-raised-button color="primary" (click)="diagnosticar()">Diagnosticar</button>
-      
+     
+    <div class="texto">{{text}}</div>
+    <div class="textoResp1" *ngIf="resp==null">{{textResp}}</div>
+    <div class="textoResp2" *ngIf="resp">{{textResp}}</div>
     </div>
+    
   </div>
 
   

@@ -266,7 +266,7 @@ func setDiagnostico(data Data,pronostic Pronostic)(Diagnostico){
 
 func postBlockChain(diagnostico Diagnostico){
 	
-	url := "http://localhost:8080/foo"
+	url := "http://localhost:8080"
 	buf := new(bytes.Buffer)
 	jsonValue, _ := json.Marshal(diagnostico)
 	resp, _ := http.Post(url, "application/json", bytes.NewBuffer(jsonValue))
